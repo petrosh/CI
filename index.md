@@ -1,4 +1,5 @@
 {{ site.github.build_revision }}
+{{ site.github.versions.jekyll }}
 
 ### example
 {{ site.data.example }}
