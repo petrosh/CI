@@ -2,6 +2,7 @@
 
 1. activated
 1. got push
+1. get infos
 
 ### Versions
 
