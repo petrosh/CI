@@ -13,7 +13,7 @@
 ### data
 
 {% for e in site.data %}
-- {{ e }}  
+- {{ e | inspect }}  
 {% endfor %}
 
 ### normal
