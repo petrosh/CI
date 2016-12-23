@@ -1,3 +1,5 @@
+{{ site.github.pages-build-version }}
+
 ### example
 
 {% for e in site.data.example %}
