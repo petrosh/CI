@@ -2,6 +2,7 @@
 
 ### example
 {{ site.data.example }}
+{{ site.data.example[0] }}
 
 {% for e in site.data.example %}
 - {{ e }}  
