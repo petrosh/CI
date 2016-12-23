@@ -3,19 +3,17 @@
 ### example
 
 {% for e in site.data.example %}
-*{{ e }}
-*{{ e.data }}
+- data: {{ e.data }} - {{ e }}
 {% endfor %}
 
 ### normal
 
 {% for e in site.data.normal %}
-*{{ e | jsonify }}
-*{{ e.data }}
+- data: {{ e.data }} - {{ e | jsonify }}
 {% endfor %}
 
 ### static_files
 
 {% for p in site.static_files %}
-*{{ p.name }}
+- {{ p.name }}
 {% endfor %}
