@@ -1,7 +1,7 @@
 {{ site.github.build_revision }}
 
 ### example
-{{ site.data.example.tracks | inspect }}
+{{ site.data.example | inspect }}
 
 {% for e in site.data.example %}
 - {{ e }}
