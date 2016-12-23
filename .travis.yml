@@ -1,0 +1,14 @@
+language: ruby
+
+rvm:
+- 2.1
+
+branches:
+  only:
+    - gh-pages
+
+script:
+  - jekyll build
+
+after_success:
+  - .travis/push.sh
