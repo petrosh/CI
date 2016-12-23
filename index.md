@@ -1,10 +1,10 @@
 {{ site.github.build_revision }}
 
 ### example
-{{ site.data.example | inspect }}
+{{ site.data.example.tracks | inspect }}
 
 {% for e in site.data.example %}
-- data: {{ e.data }} - {{ e }}
+- {{ e }}
 {% endfor %}
 
 ### normal
