@@ -1,19 +1,18 @@
 - {{ site.github.build_revision }}
 - {{ site.github.versions.jekyll }}
 
-### example
-
-{{ site.data.example }}
-{{ site.data.example[0] }}
-
-{% for e in site.data.example %}
-- {{ e }}  
-{% endfor %}
-
 ### data
 
 {% for e in site.data %}
 - {{ e | inspect }}  
+{% endfor %}
+
+### example
+
+{{ site.data.example }}
+
+{% for e in site.data.example %}
+- {{ e }}  
 {% endfor %}
 
 ### normal
