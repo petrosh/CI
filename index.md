@@ -9,6 +9,7 @@
 {% endfor %}
 
 ### normal
+{{ site.data.normal | jsonify }}
 
 {% for e in site.data.normal %}
 - data: {{ e.data }} - {{ e | jsonify }}  
