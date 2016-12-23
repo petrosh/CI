@@ -1,20 +1,20 @@
 {{ site.github.build_revision }}
 
 ### example
-{{ site.data.example | inspect }}
+{{ site.data.example }}
 
 {% for e in site.data.example %}
-- {{ e }}
+- {{ e }}  
 {% endfor %}
 
 ### normal
 
 {% for e in site.data.normal %}
-- data: {{ e.data }} - {{ e | jsonify }}
+- data: {{ e.data }} - {{ e | jsonify }}  
 {% endfor %}
 
 ### static_files
 
 {% for p in site.static_files %}
-- {{ p.name }}
+- {{ p.name }}  
 {% endfor %}
