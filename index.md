@@ -1,6 +1,7 @@
 {{ site.github.build_revision }}
 
 ### example
+{{ site.data.example.lista | inspect }}
 
 {% for e in site.data.example %}
 - data: {{ e.data }} - {{ e }}
