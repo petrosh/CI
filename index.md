@@ -10,6 +10,12 @@
 - {{ e }}  
 {% endfor %}
 
+### data
+
+{% for e in site.data %}
+- {{ e }}  
+{% endfor %}
+
 ### normal
 
 {{ site.data.normal | jsonify }}
