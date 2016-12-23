@@ -8,6 +8,4 @@ branches:
     - master
 
 script: "bundle exec jekyll build"
-
-after_success:
-  - push.sh
+after_success: bash ./push.sh
