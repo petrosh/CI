@@ -1,7 +1,8 @@
-{{ site.github.build_revision }}
-{{ site.github.versions.jekyll }}
+- {{ site.github.build_revision }}
+- {{ site.github.versions.jekyll }}
 
 ### example
+
 {{ site.data.example }}
 {{ site.data.example[0] }}
 
@@ -10,6 +11,7 @@
 {% endfor %}
 
 ### normal
+
 {{ site.data.normal | jsonify }}
 
 {% for e in site.data.normal %}
