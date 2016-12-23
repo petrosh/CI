@@ -1,4 +1,6 @@
 {
-  { 'data': 15, 'name': 'primo'},
-  { 'data': 4, 'name': 'secondo'}
+  "lista" : [
+    { 'data': 15, 'name': 'primo'},
+    { 'data': 4, 'name': 'secondo'}
+  ]
 }
