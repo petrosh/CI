@@ -7,8 +7,7 @@ branches:
   only:
     - gh-pages
 
-script:
-  - jekyll build
+script: "bundle exec jekyll build"
 
 after_success:
   - .travis/push.sh
