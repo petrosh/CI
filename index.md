@@ -1,7 +1,11 @@
 # Try Travis pull
 
-- {{ site.github.build_revision }}
-- {{ site.github.versions.jekyll }}
+1. activated
+
+### Versions
+
+- sha {{ site.github.build_revision }}
+- jekyll {{ site.github.versions.jekyll }}
 
 ### data
 
