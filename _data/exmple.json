@@ -1,12 +1,8 @@
+[{
+  "id":"140",
+  "title":"Android"
+},
 {
-   "tracks":[
-      {
-         "id":"140",
-         "title":"Android"
-      },
-      {
-         "id":"142",
-         "title":"GDG[x]"
-      }
-   ]
-}
+  "id":"142",
+  "title":"GDG[x]"
+}]
