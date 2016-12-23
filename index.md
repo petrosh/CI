@@ -1,4 +1,4 @@
-{{ site.github.pages-build-version }}
+{{ site.github.build_revision }}
 
 ### example
 
