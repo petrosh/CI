@@ -5,7 +5,8 @@ git log -p -1 --pretty=format:"%an - %cn"
 
 printf "\n***\n"
 
-
+echo log namestatus
+git log -p -1 --name-status
 
 printf "\n***\n"
 
@@ -63,3 +64,6 @@ printf "\n---\n"
 
 echo Get only remote branches
 git branch -r
+
+echo CHECKOUT...
+git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:prova
