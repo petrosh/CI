@@ -1,12 +1,11 @@
 printf "\n***\n"
 
 echo prettyformat an - cn - D:
-git log -p -1 --pretty=format:"%an - %cn - %D"
+git log -p -1 --pretty=format:"%an - %cn"
 
 printf "\n***\n"
 
-echo git status
-git status
+
 
 printf "\n***\n"
 
@@ -39,8 +38,9 @@ git ls-files -t
 printf "\n---\n"
 
 echo branch: $TRAVIS_BRANCH
-echo sourcebranch = $SOURCE_BRANCH
+echo sourcebranch: $TRAVIS_SOURCE_BRANCH
 echo pr: $TRAVIS_PULL_REQUEST
+echo PRbranch: $TRAVIS_PULL_REQUEST_BRANCH
 
 printf "\n---\n"
 
@@ -57,7 +57,7 @@ git remote
 printf "\n---\n"
 
 echo show sha nameonly
-git show SHA --name-only
+git show $SHA --name-only
 
 printf "\n---\n"
 
