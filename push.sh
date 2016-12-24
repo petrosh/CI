@@ -6,7 +6,7 @@ git log -p -1 --pretty=format:"%an - %cn - %D"
 printf "\n***\n"
 
 echo prettyformat commit hash H:
-git log -p -1 --pretty=format:"%H"
+git log -1 --pretty=format:"%H"
 
 printf "\n---\n"
 
@@ -24,7 +24,7 @@ git diff-tree --no-commit-id --name-only -r $SHA
 printf "\n---\n"
 
 echo trackedfiles
-git ls-files -t`
+git ls-files -t
 
 printf "\n---\n"
 
@@ -44,7 +44,7 @@ printf "\n---\n"
 echo Get list of all remote references
 git remote
 
-
+printf "\n---\n"
 
 echo show sha nameonly
 git show SHA --name-only
