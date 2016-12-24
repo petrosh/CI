@@ -23,7 +23,11 @@ git diff-tree --no-commit-id --name-only -r $SHA
 
 printf "\n---\n"
 
-echo trackedfiles: ${git ls-files -t}
+echo trackedfiles
+git ls-files -t`
+
+printf "\n---\n"
+
 echo branch: $TRAVIS_BRANCH
 echo sourcebranch = $SOURCE_BRANCH
 echo pr: $TRAVIS_PULL_REQUEST
@@ -34,7 +38,18 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO}
 echo repo $REPO $SSH_REPO
 
+echo GITHUB_URL ${GITHUB_URL:-`git config remote.origin.url`}
 printf "\n---\n"
 
 echo Get list of all remote references
 git remote
+
+
+
+echo show sha nameonly
+git show SHA --name-only
+
+printf "\n---\n"
+
+echo Get only remote branches
+git branch -r
