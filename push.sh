@@ -23,6 +23,18 @@ git diff-tree --no-commit-id --name-only -r $SHA
 
 printf "\n---\n"
 
+echo trackedfiles: ${git ls-files -t}
 echo branch: $TRAVIS_BRANCH
-
+echo sourcebranch = $SOURCE_BRANCH
 echo pr: $TRAVIS_PULL_REQUEST
+
+printf "\n---\n"
+
+REPO=`git config remote.origin.url`
+SSH_REPO=${REPO}
+echo repo $REPO $SSH_REPO
+
+printf "\n---\n"
+
+echo Get list of all remote references
+git remote
