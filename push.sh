@@ -5,6 +5,16 @@ git log -p -1 --pretty=format:"%an - %cn - %D"
 
 printf "\n***\n"
 
+echo git status
+git status
+
+printf "\n***\n"
+
+echo cached
+git diff --cached --name-only
+
+printf "\n***\n"
+
 echo prettyformat commit hash H:
 git log -1 --pretty=format:"%H"
 
