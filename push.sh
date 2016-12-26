@@ -3,7 +3,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" === "false" ]; then
+if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
     echo TRAVIS_BRANCH $TRAVIS_BRANCH
     exit 0
