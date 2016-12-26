@@ -11,9 +11,10 @@ printf "**START**\n"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
-    exit 0
+    # exit 0
 fi
-URL = ${https://api.github.com/USR/REPO/pulls/TRAVIS_PULL_REQUEST/files}
+
+URL = `https://api.github.com/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST/files`
 echo $URL
 curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
 
