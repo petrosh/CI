@@ -1,14 +1,22 @@
-printf "**START**\n"
-set -e # Exit with nonzero exit code if anything fails
+REPO=$(basename `git rev-parse --show-toplevel`)
+echo $REPO
+USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
+echo $USR
 
-SOURCE_BRANCH="master"
+printf "**START**\n"
+#echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
-    echo TRAVIS_BRANCH $TRAVIS_BRANCH
     exit 0
 fi
+URL = https://api.github.com/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}/files
+echo $URL
+curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
 
+echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
+SOURCE_BRANCH="master"
 # It is a pull request
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -19,6 +27,14 @@ SHA=`git rev-parse --verify HEAD`
 echo Tprbranch $TRAVIS_PULL_REQUEST_BRANCH
 
 printf "\n**END**"
+
+echo CHECKOUT...
+git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
+git clone $REPO builds
+cd builds
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+cd ..
+ls
 
 echo prettyformat an - cn - D:
 git log -p -1 --pretty=format:"%an - %cn"
@@ -82,11 +98,3 @@ printf "\n---\n"
 
 echo Get only remote branches
 git branch -r
-
-echo CHECKOUT...
-git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
-git clone $REPO builds
-cd builds
-git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ..
-ls
