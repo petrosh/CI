@@ -1,6 +1,5 @@
 printf "**START**\n"
-echo user:
-git log -1 --pretty=format:"%an"
+echo PR_USER ${PR_USER:-`git log -1 --pretty=format:"%an"`}
 
 SOURCE_BRANCH="master"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
