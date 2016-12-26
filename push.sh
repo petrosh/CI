@@ -13,6 +13,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 fi
 URL = https://api.github.com/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}/files
 echo $URL
+curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
 
 echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
 SOURCE_BRANCH="master"
