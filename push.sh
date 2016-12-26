@@ -1,7 +1,12 @@
 printf "**START**\n"
 #echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
-git config --get remote.origin.url
-git checkout
+URL=`git config --get remote.origin.url`
+basename=$(basename "${URL%.*}")
+echo repo: $basename
+basename `git rev-parse --show-toplevel`
+user = git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1
+echo user
+
 echo https://api.github.com/:user/:repo/pulls/${TRAVIS_PULL_REQUEST}
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
