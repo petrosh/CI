@@ -17,15 +17,7 @@ SHA=`git rev-parse --verify HEAD`
 # Clone the existing branch for this repo into the same
 # Create a new empty branch if builds doesn't exist yet (should only happen on first deply)
 echo Tprbranch $TRAVIS_PULL_REQUEST_BRANCH
-echo CHECKOUT...
-git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
-git clone $REPO builds
-cd builds
-git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ..
-ls
-echo CHECKOUT...
-git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
+
 printf "\n**END**"
 
 echo prettyformat an - cn - D:
@@ -90,3 +82,11 @@ printf "\n---\n"
 
 echo Get only remote branches
 git branch -r
+
+echo CHECKOUT...
+git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
+git clone $REPO builds
+cd builds
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+cd ..
+ls
