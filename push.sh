@@ -1,11 +1,11 @@
 printf "**START**\n"
-echo PR_USER ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
 
+echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
 SOURCE_BRANCH="master"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
-    echo TRAVIS_BRANCH $TRAVIS_BRANCH
     exit 0
 fi
 
