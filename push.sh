@@ -1,20 +1,21 @@
 REPO=$(basename `git rev-parse --show-toplevel`)
 echo $REPO
+# owner target repo
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-PR_USER=`git log -1 --pretty=format:"%an"`
-echo $PR_USER
+# pull guy
+echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
 
 printf "**START**\n"
-#echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+git fetch && git diff --name-only ..origin
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
-    # exit 0
+    exit 0
 fi
 
-URL = `https://api.github.com/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST/files`
+URL = `https://api.github.com/repos/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST/files`
 echo $URL
 curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
 
