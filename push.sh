@@ -1,5 +1,5 @@
 printf "**START**\n"
-set -e # Exit with nonzero exit code if anything fails
+echo user: `git log -p -1 --pretty=format:"%an"`
 
 SOURCE_BRANCH="master"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -19,6 +19,14 @@ SHA=`git rev-parse --verify HEAD`
 echo Tprbranch $TRAVIS_PULL_REQUEST_BRANCH
 
 printf "\n**END**"
+
+echo CHECKOUT...
+git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
+git clone $REPO builds
+cd builds
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+cd ..
+ls
 
 echo prettyformat an - cn - D:
 git log -p -1 --pretty=format:"%an - %cn"
@@ -82,11 +90,3 @@ printf "\n---\n"
 
 echo Get only remote branches
 git branch -r
-
-echo CHECKOUT...
-git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
-git clone $REPO builds
-cd builds
-git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ..
-ls
