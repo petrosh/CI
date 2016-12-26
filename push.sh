@@ -1,5 +1,6 @@
 printf "**START**\n"
 #echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+git config --get remote.origin.url
 git checkout
 echo https://api.github.com/:user/:repo/pulls/${TRAVIS_PULL_REQUEST}
 
