@@ -2,7 +2,6 @@ REPO=$(basename `git rev-parse --show-toplevel`)
 echo $REPO
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-echo https://api.github.com/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 
 printf "**START**\n"
 #echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
@@ -12,6 +11,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
     exit 0
 fi
+URL = https://api.github.com/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}/files
+echo $URL
+
 echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
 SOURCE_BRANCH="master"
 # It is a pull request
