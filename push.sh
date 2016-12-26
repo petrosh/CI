@@ -3,9 +3,9 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo "Skipping deploy; just doing a build."
-    
+    echo TRAVIS_BRANCH $TRAVIS_BRANCH
     exit 0
 fi
 # It is a pull request
@@ -15,7 +15,7 @@ SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 # Clone the existing branch for this repo into the same
 # Create a new empty branch if builds doesn't exist yet (should only happen on first deply)
-echo prbranch $TRAVIS_PULL_REQUEST_BRANCH
+echo Tprbranch $TRAVIS_PULL_REQUEST_BRANCH
 echo CHECKOUT...
 git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:$TRAVIS_PULL_REQUEST_BRANCH
 git clone $REPO builds
