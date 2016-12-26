@@ -1,12 +1,11 @@
-printf "**START**\n"
-#echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
-
-basename=$(basename `git rev-parse --show-toplevel`)
-echo repo: $basename
+REPO=$(basename `git rev-parse --show-toplevel`)
+echo $REPO
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
+echo https://api.github.com/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 
-echo https://api.github.com/$(USR)/$(basename)/pulls/${TRAVIS_PULL_REQUEST}
+printf "**START**\n"
+#echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
