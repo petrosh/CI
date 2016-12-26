@@ -8,6 +8,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo TRAVIS_BRANCH $TRAVIS_BRANCH
     exit 0
 fi
+echo TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST
 # It is a pull request
 # Save some useful information
 REPO=`git config remote.origin.url`
