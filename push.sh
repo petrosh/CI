@@ -1,11 +1,11 @@
 printf "**START**\n"
 #echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
-URL=`git config --get remote.origin.url`
-basename=$(basename "${URL%.*}")
+
+basename=$(basename `git rev-parse --show-toplevel`)
 echo repo: $basename
-basename `git rev-parse --show-toplevel`
-user = git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1
-echo user
+
+user = `git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
+echo $user
 
 echo https://api.github.com/:user/:repo/pulls/${TRAVIS_PULL_REQUEST}
 
