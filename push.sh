@@ -6,10 +6,19 @@ USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git
 echo $USR
 echo ls-remote:
 git ls-remote --get-url
-git ls-remote --get-url origin | cut -f 2 -d @ | cut -f 1 -d ":"
+git ls-remote --get-url origin
 echo basename
 basename $(git config --get remote.$(git config --get branch.master.remote).url) .git
+echo "-l"
 git config -l
+echo space
+git config --get remote.$(git config --get branch.master.remote).url
+echo mail
+LOCAL_BRANCH=`git name-rev --name-only HEAD`
+TRACKING_BRANCH=`git config branch.$LOCAL_BRANCH.merge`
+echo "$TRACKING_BRANCH"
+echo vv
+git branch -vv
 #git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
