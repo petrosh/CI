@@ -14,6 +14,7 @@ printf "**START**\n"
 git config
 # pull guy
 echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+git remote -v
 # fetch and diff
 git fetch && git diff --name-only ..origin
 echo show origin
@@ -29,6 +30,7 @@ SOURCE_BRANCH="master"
 # It is a pull request
 # Save some useful information
 REPO=`git config remote.origin.url`
+echo config $REPO
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 # Clone the existing branch for this repo into the same
