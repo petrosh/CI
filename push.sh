@@ -7,8 +7,8 @@ echo $USR
 I1="https://api.github.com/repos/"
 I2=${I1}${USR}/${REPO}
 echo $I2
-curl "$I2" | sed -n 's/"id": "\([^"]*\)"/\1/p'
-#echo "$output"
+IP=$(curl "$I2")
+echo "$IP"
 #INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 #echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
