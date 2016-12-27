@@ -6,7 +6,7 @@ USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git
 echo $USR
 I1="https://api.github.com/repos/"
 echo I1 $I1
-I2=$I1$URL/$REPO/pulls
+I2=${I1}${USR}/${REPO}/pulls
 echo I2 $I2
 #INDIRI = 'https://api.github.com/repos/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}'
 #echo url $INDIRI
