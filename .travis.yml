@@ -12,5 +12,6 @@ before_script: bash ./before.sh
 script: "bundle exec jekyll build"
 
 after_success:
-  - "echo TRIGGER_REPO $TRIGGER_REPO"
+  - "REPO=$(basename `git rev-parse --show-toplevel`)"
+  - "choe $REPO"
   - bash ./push.sh
