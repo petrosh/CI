@@ -7,7 +7,7 @@ echo $USR
 I1="https://api.github.com/repos/"
 I2=${I1}${USR}/${REPO}/pulls
 echo $I2
-output = $(curl I2 | sed -n 's/"user": "\([^"]*\)"/\1/p')
+output = $(curl $I2 | sed -n 's/"user": "\([^"]*\)"/\1/p')
 echo output
 #INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 #echo url $INDIRI
@@ -20,7 +20,7 @@ fi
 printf "**START**\n"
 I3=${TRAVIS_PULL_REQUEST}
 I4=$I2/$I3
-output = $(curl I4 | sed -n 's/"user": "\([^"]*\)"/\1/p')
+output = $(curl $I4 | sed -n 's/"user": "\([^"]*\)"/\1/p')
 echo output
 # fetch and diff
 git fetch && git diff --name-only ..origin
