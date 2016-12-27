@@ -5,9 +5,10 @@ echo $REPO
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
 I1="https://api.github.com/repos/"
-echo I1 $I1
 I2=${I1}${USR}/${REPO}/pulls
-echo I2:$I2
+echo $I2
+output = $(`curl $I2 | sed -n 's/"user": "\([^"]*\)"/\1/p'`)
+echo output
 #INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 #echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -19,7 +20,4 @@ fi
 printf "**START**\n"
 # fetch and diff
 git fetch && git diff --name-only ..origin
-
-output = $(curl $I2 | sed -n 's/"user": "\([^"]*\)"/\1/p')
-echo output
 printf "\n**END**"
