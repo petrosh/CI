@@ -13,6 +13,12 @@ echo "-l"
 git config -l
 echo space
 git config --get remote.$(git config --get branch.master.remote).url
+echo mail
+LOCAL_BRANCH=`git name-rev --name-only HEAD`
+TRACKING_BRANCH=`git config branch.$LOCAL_BRANCH.merge`
+echo "$TRACKING_BRANCH"
+echo vv
+git branch -vv
 #git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
