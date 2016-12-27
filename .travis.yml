@@ -7,7 +7,8 @@ branches:
   only:
     - master
 
-before_script: bash ./before.sh
+sudo: false
+cache: bundler
 
 script: "bundle exec jekyll build"
 
