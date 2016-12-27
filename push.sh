@@ -7,7 +7,7 @@ echo $USR
 echo ls-remote:
 git ls-remote --get-url
 echo checkout
-git checkout -t origin/master
+git checkout -t origin/feature
 #git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
