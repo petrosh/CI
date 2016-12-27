@@ -4,8 +4,7 @@ echo $REPO
 # owner target repo
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-github_cmd=$(`git config --get remote.github.url`)
-echo $github_cmd
+git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
 #echo $I2
