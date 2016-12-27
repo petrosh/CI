@@ -1,3 +1,4 @@
+#!/bin/bash -e
 REPO=$(basename `git rev-parse --show-toplevel`)
 echo $REPO
 # owner target repo
@@ -14,9 +15,13 @@ printf "**START**\n"
 git config
 # pull guy
 echo PR_USER: ${PR_USER:-`git log -1 --pretty=format:"%an"`}
+git remote -v
 # fetch and diff
 git fetch && git diff --name-only ..origin
+echo show origin
 git remote show origin
+echo config remote url
+git config --get remote.origin.url
 #URL = `https://api.github.com/repos/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST/files`
 #echo $URL
 #curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
@@ -26,6 +31,7 @@ SOURCE_BRANCH="master"
 # It is a pull request
 # Save some useful information
 REPO=`git config remote.origin.url`
+echo config $REPO
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 # Clone the existing branch for this repo into the same
