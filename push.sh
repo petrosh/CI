@@ -20,6 +20,6 @@ printf "**START**\n"
 # fetch and diff
 git fetch && git diff --name-only ..origin
 
-output = $(curl "${I2}" | sed -n 's/"user": "\([^"]*\)"/\1/p')
+output = $(curl $I2 | sed -n 's/"user": "\([^"]*\)"/\1/p')
 echo output
 printf "\n**END**"
