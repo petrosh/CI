@@ -4,7 +4,8 @@ echo $REPO
 # owner target repo
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-
+echo TRIGGER_REPO $TRIGGER_REPO
+echo TRIGGER_COMMIT $TRIGGER_COMMIT
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
     git fetch && git diff --name-only ..origin
