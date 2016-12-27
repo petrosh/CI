@@ -1,3 +1,4 @@
+#!/bin/bash -e
 REPO=$(basename `git rev-parse --show-toplevel`)
 echo $REPO
 # owner target repo
