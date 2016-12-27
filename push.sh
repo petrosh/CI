@@ -8,7 +8,7 @@ I1="https://api.github.com/repos/"
 #echo I1 $I1
 #I2=${I1}${USR}/${REPO}/pulls
 #echo I2 $I2
-INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}'
+INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Skipping deploy; just doing a build."
