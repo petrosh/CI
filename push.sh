@@ -9,6 +9,7 @@ I2=${I1}${USR}/${REPO}
 echo $I2
 IP=$(curl "$I2")
 echo "$IP"
+svaria=${IP} | sed -n 's/"id": "\([^"]*\)"/\1/p'
 #INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 #echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -21,7 +22,10 @@ printf "**START**\n"
 I3=${TRAVIS_PULL_REQUEST}
 I4=$I2/pulls/$I3
 echo $I4
-output = $(curl "$I4" | sed -n 's/"user": "\([^"]*\)"/\1/p')
+GIP=$(curl "$I4")
+echo"$GIP"
+varia=${GIP} | sed -n 's/"user": "\([^"]*\)"/\1/p'
+#output = $(curl "$I4" | sed -n 's/"user": "\([^"]*\)"/\1/p')
 echo "$output"
 # fetch and diff
 git fetch && git diff --name-only ..origin
