@@ -15,9 +15,9 @@ printf "**START**\n"
 # fetch and diff
 git fetch && git diff --name-only ..origin
 
-INDIRI = https://api.github.com/repos/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
-echo url $INDIRI
-curl $INDIRI | sed -n 's/"user": "\([^"]*\)"/\1/p'
+#INDIRI = "https://api.github.com/repos/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}"
+#echo url $INDIRI
+curl "https://api.github.com/repos/${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}" | sed -n 's/"user": "\([^"]*\)"/\1/p'
 
 echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
 SOURCE_BRANCH="master"
