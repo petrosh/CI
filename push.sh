@@ -23,7 +23,7 @@ echo show origin
 git remote show origin
 echo config remote url
 git config --get remote.origin.url
-URL = `https://api.github.com/repos/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST/files`
+URL = https://api.github.com/repos/$USR/$REPO/pulls/$TRAVIS_PULL_REQUEST
 echo url $URL
 curl $URL | sed -n 's/"filename": "\([^"]*\)"/\1/p'
 
