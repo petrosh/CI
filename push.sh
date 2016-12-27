@@ -5,6 +5,7 @@ echo $REPO
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
 git fetch origin
+git ls-remote --get-url
 #git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
