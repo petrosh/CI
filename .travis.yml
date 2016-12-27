@@ -14,4 +14,6 @@ script: "bundle exec jekyll build"
 after_success:
   - "REPO=$(basename `git rev-parse --show-toplevel`)"
   - "echo $REPO"
+  - "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
+  - "echo $TRAVIS_PULL_REQUEST"
   - bash ./push.sh
