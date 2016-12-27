@@ -13,5 +13,5 @@ script: "bundle exec jekyll build"
 
 after_success:
   - "REPO=$(basename `git rev-parse --show-toplevel`)"
-  - "choe $REPO"
+  - "echo $REPO"
   - bash ./push.sh
