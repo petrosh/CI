@@ -10,6 +10,7 @@ echo $I2
 IP=$(curl "$I2")
 echo "$IP"
 svaria=${IP} | sed -n 's/"id": "\([^"]*\)"/\1/p'
+echo "$svaria"
 #INDIRI = ${I1}${USR}/${REPO}/pulls/${TRAVIS_PULL_REQUEST}
 #echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
