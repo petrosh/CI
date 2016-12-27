@@ -11,4 +11,6 @@ before_script: bash ./before.sh
 
 script: "bundle exec jekyll build"
 
-after_success: bash ./push.sh
+after_success:
+  - "echo TRIGGER_REPO $TRIGGER_REPO"
+  - bash ./push.sh
