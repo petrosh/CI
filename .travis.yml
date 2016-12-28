@@ -8,8 +8,8 @@ branches:
     - master
 
 script:
-  - bash git config --local travis.slug
   - "bundle exec jekyll build"
 
 after_success:
+  - bash git config --local travis.slug
   - bash ./push.sh
