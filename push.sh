@@ -20,7 +20,7 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     printf "**START**\n"
     # git fetch && git diff --name-only ..origin
-    SHA = $(`git log -p -1 --pretty=format:"%H"`)
+    SHA=`git rev-parse --verify HEAD`
     echo SHA: $SHA
     echo clone:
     git clone $SHA -v
