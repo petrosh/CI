@@ -25,8 +25,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
     echo TRAVIS_PULL_REQUEST_BRANCH: ${TRAVIS_PULL_REQUEST_BRANCH}
     echo TRAVIS_SOURCE_BRANCH: ${TRAVIS_SOURCE_BRANCH}
-    echo TRAVIS_PULL_REQUEST_BRANCH: ${TRAVIS_PULL_REQUEST_BRANCH}
-    
     printf "\n**FILES**"
     git diff --name-only ..origin
     REPO=$(basename `git rev-parse --show-toplevel`)
