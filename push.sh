@@ -22,17 +22,16 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     # git fetch && git diff --name-only ..origin
     SHA=`git rev-parse --verify HEAD`
     echo SHA: $SHA
-    echo clone:
-    #git clone $SHA -v
-    echo pull:
-    #git pull $SHA -v
-    echo fetch:
-    #git fetch $SHA -v
-    cd .git
-    ls
+    echo TRAVIS_BRANCH: ${TRAVIS_BRANCH}
+    echo TRAVIS_PULL_REQUEST_BRANCH: ${TRAVIS_PULL_REQUEST_BRANCH}
+    echo TRAVIS_SOURCE_BRANCH: ${TRAVIS_SOURCE_BRANCH}
+    echo TRAVIS_PULL_REQUEST_BRANCH: ${TRAVIS_PULL_REQUEST_BRANCH}
+    
+    printf "\n**FILES**"
     git diff --name-only ..origin
     REPO=$(basename `git rev-parse --show-toplevel`)
     echo REPO: $REPO
+    git clone $REPO
     echo TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG
     # owner target repo
     USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
