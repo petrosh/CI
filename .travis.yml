@@ -7,7 +7,9 @@ branches:
   only:
     - master
 
-script: "bundle exec jekyll build"
+script:
+  - "git config --local travis.slug"
+  - "bundle exec jekyll build"
 
 after_success:
   - bash ./push.sh
