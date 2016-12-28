@@ -26,8 +26,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     # owner target repo
     USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
     echo USR: $USR
-    echo status:
-    git status
+    echo forkpoint:
+    git merge-base --fork-point
     echo prettyformat an - cn:
     git log -p -1 --pretty=format:"%aN - %cN"
     echo list:
