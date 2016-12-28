@@ -20,10 +20,14 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     printf "**START**\n"
     # git fetch && git diff --name-only ..origin
+    SHA = `git log -p -1 --pretty=format:"%H"`
+    echo SHA: $SHA
+    echo clone:
+    git clone $SHA -v
     echo pull:
-    git pull
+    git pull $SHA -v
     echo fetch:
-    git fetch
+    git fetch $SHA -v
     git diff --name-only ..origin
     REPO=$(basename `git rev-parse --show-toplevel`)
     echo REPO: $REPO
