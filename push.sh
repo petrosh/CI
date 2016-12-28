@@ -4,8 +4,8 @@ echo $REPO
 # owner target repo
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-echo travisslug
-git config --local travis.slug
+#echo travisslug
+#git config --local travis.slug
 echo ls-remote:
 git ls-remote --get-url
 git ls-remote --get-url origin
