@@ -23,11 +23,13 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     SHA=`git rev-parse --verify HEAD`
     echo SHA: $SHA
     echo clone:
-    git clone $SHA -v
+    #git clone $SHA -v
     echo pull:
-    git pull $SHA -v
+    #git pull $SHA -v
     echo fetch:
-    git fetch $SHA -v
+    #git fetch $SHA -v
+    cd .git
+    ls
     git diff --name-only ..origin
     REPO=$(basename `git rev-parse --show-toplevel`)
     echo REPO: $REPO
