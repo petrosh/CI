@@ -18,7 +18,6 @@ LOCAL_BRANCH=`git name-rev --name-only HEAD`
 TRACKING_BRANCH=`git config branch.$LOCAL_BRANCH.merge`
 echo "$TRACKING_BRANCH"
 echo vv
-git branch -vv
 #git config --get remote.github.url
 #I1="https://api.github.com/repos/"
 #I2=${I1}${USR}/${REPO}
@@ -36,6 +35,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 fi
 # It is a pull request
 printf "**START**\n"
+git branch -vv
+git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:sicuro
 #I3=${TRAVIS_PULL_REQUEST}
 #I4=$I2/pulls/$I3
 #echo $I4
