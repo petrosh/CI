@@ -19,19 +19,20 @@
 #echo url $INDIRI
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     printf "**START**\n"
-    git fetch && git diff --name-only ..origin
+    # git fetch && git diff --name-only ..origin
+    echo pull:
+    git pull
+    echo fetch:
+    git fetch
+    git diff --name-only ..origin
     REPO=$(basename `git rev-parse --show-toplevel`)
     echo REPO: $REPO
     echo TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG
     # owner target repo
     USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
     echo USR: $USR
-    echo forkpoint:
-    git merge-base --fork-point
     echo prettyformat an - cn:
     git log -p -1 --pretty=format:"%aN - %cN"
-    echo list:
-    git log --format="%an %ae" | sort | uniq
     printf "\n**END**"
     exit 0
 fi
