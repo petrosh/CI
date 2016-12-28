@@ -30,6 +30,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     git status
     echo prettyformat an - cn:
     git log -p -1 --pretty=format:"%aN - %cN"
+    echo list:
+    git log --format="%an %ae" | sort | uniq
     printf "\n**END**"
     exit 0
 fi
