@@ -4,8 +4,8 @@ echo $REPO
 # owner target repo
 USR=`git remote show origin -n | grep h.URL | sed 's/.*\/\/github.com\///;s/.git$//'| cut -d'/' -f1`
 echo $USR
-echo travisslug
-git config --local travis.slug
+#echo travisslug
+#git config --local travis.slug
 echo ls-remote:
 git ls-remote --get-url
 git ls-remote --get-url origin
@@ -13,8 +13,7 @@ echo basename
 basename $(git config --get remote.$(git config --get branch.master.remote).url) .git
 echo "-l"
 git config -l
-echo space
-git config --get remote.$(git config --get branch.master.remote).url
+echo TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG
 echo mail
 LOCAL_BRANCH=`git name-rev --name-only HEAD`
 TRACKING_BRANCH=`git config branch.$LOCAL_BRANCH.merge`
