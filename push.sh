@@ -28,13 +28,15 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo USR: $USR
     echo status:
     git status
-    echo status:
-    git log --format='%aN' | sort -u
+    echo prettyformat an - cn:
+    git log -p -1 --pretty=format:"%aN - %cN"
+    echo fecead
+    git log FETCH_HEAD
     printf "\n**END**"
     exit 0
 fi
 # It is a pull request
-git branch -vv
+#git branch -vv
 #git fetch origin refs/pull/$TRAVIS_PULL_REQUEST/head:sicuro
 #I3=${TRAVIS_PULL_REQUEST}
 #I4=$I2/pulls/$I3
