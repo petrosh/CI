@@ -11,5 +11,4 @@ script:
   - "bundle exec jekyll build"
 
 after_success:
-  - git commit -a -m "Committed by Travis-CI build number: $TRAVIS_JOB_ID"
   - bash ./push.sh
