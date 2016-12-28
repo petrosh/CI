@@ -13,8 +13,7 @@ echo basename
 basename $(git config --get remote.$(git config --get branch.master.remote).url) .git
 echo "-l"
 git config -l
-echo space
-git config --get remote.$(git config --get branch.master.remote).url
+echo TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG
 echo mail
 LOCAL_BRANCH=`git name-rev --name-only HEAD`
 TRACKING_BRANCH=`git config branch.$LOCAL_BRANCH.merge`
